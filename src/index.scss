@@ -1,3 +1,4 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +7,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 75rem;
+  padding-top: 4.5rem;
 }
 
 code {
