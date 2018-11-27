@@ -16,7 +16,7 @@ class App extends Component {
   };
 
   render() {
-    if (!this.state.isLoggedIn) {
+    if (this.state.isLoggedIn) {
       return <Login />;
     } else {
       return (
