@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router";
+// react redux
+import { connect } from "react-redux";
 // sass
 import "./App.scss";
 // import componant
@@ -30,5 +32,10 @@ class App extends Component {
     }
   }
 }
+const mapDispatchToProps = {};
+const mapStateToProps = state => ({});
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

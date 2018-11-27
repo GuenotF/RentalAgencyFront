@@ -1,18 +1,40 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import updateLogin from "./actions/updateLogin";
 // sass
 import "./login.scss";
 
 export class Login extends Component {
-  static propTypes = {
-    prop: PropTypes
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      mail: "",
+      password: ""
+    };
+
+    this.handleMail = this.handleMail.bind(this);
+    this.handlePass = this.handlePass.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleMail(event) {
+    this.setState({ mail: event.target.value });
+  }
+  handlePass(event) {
+    this.setState({ password: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.updateLogin(true);
+  }
+
+  componentDidMount() {}
 
   render() {
     return (
       <div className="text-center">
-        <form className="form-signin">
+        <form onSubmit={this.handleSubmit} className="form-signin">
           <img
             className="mb-4"
             src="../../assets/brand/bootstrap-solid.svg"
@@ -21,26 +43,24 @@ export class Login extends Component {
             height="72"
           />
           <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <label for="inputEmail" className="sr-only">
-            Email address
-          </label>
+          <label className="sr-only">Email address</label>
           <input
             type="email"
             id="inputEmail"
             className="form-control"
             placeholder="Email address"
             required
-            autofocus
+            autoFocus
+            onChange={this.handleMail}
           />
-          <label for="inputPassword" className="sr-only">
-            Password
-          </label>
+          <label className="sr-only">Password</label>
           <input
             type="password"
             id="inputPassword"
             className="form-control"
             placeholder="Password"
             required
+            onChange={this.handlePass}
           />
           <div className="checkbox mb-3">
             <label>
@@ -59,7 +79,9 @@ export class Login extends Component {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  updateLogin
+};
 
 export default connect(
   mapStateToProps,
