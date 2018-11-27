@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ListeAgence from "../liste-agence/ListeAgence";
 
 class Home extends Component {
   constructor(props) {
@@ -24,21 +25,20 @@ class Home extends Component {
       <main role="main" className="container">
         <div className="jumbotron">
           <h1>Bonjour {this.props.name}</h1>
-
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="adress">Où vous trouvez-vous ?</label>
+              <label htmlFor="cp">Entrez un code postal</label>
               <input
                 type="text"
                 className="form-control"
-                id="adress"
-                aria-describedby="emailHelp"
-                placeholder="adresse ..."
+                id="cp"
+                aria-describedby="codePostale"
+                placeholder="cp ..."
                 value={this.state.value}
                 onChange={this.handleChange}
               />
               <small id="emailHelp" className="form-text text-muted">
-                exemple : 10, rue de la fontaine 31000 Toulouse
+                Exemple : 31000
               </small>
             </div>
             <input
@@ -48,6 +48,7 @@ class Home extends Component {
             />
           </form>
         </div>
+        <ListeAgence />
       </main>
     );
   }

@@ -8,24 +8,19 @@ import "./App.scss";
 import Nav from "../nav/Nav";
 import Home from "../home/Home";
 import Login from "../login/Login";
-import listeAgence from "../liste-agence/listeAgence";
+import listeAgence from "../liste-agence/ListeAgence";
 
 class App extends Component {
-  state = {
-    isLoggedIn: false
-  };
-
   render() {
-    if (this.state.isLoggedIn) {
+    if (!this.props.isLoggedIn) {
       return <Login />;
     } else {
       return (
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/" render={() => <Home name="Vincent" />} />
+            <Route exact path="/" render={() => <Home />} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/liste-agence" component={listeAgence} />
           </Switch>
         </div>
       );
@@ -33,7 +28,9 @@ class App extends Component {
   }
 }
 const mapDispatchToProps = {};
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  isLoggedIn: state.user.isLoggedIn
+});
 
 export default connect(
   mapStateToProps,

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import updateLogin from "./actions/updateLogin";
 // sass
 import "./login.scss";
+// Logo
+import logo from "./logo.png";
 
 export class Login extends Component {
   constructor(props) {
@@ -35,25 +37,21 @@ export class Login extends Component {
     return (
       <div className="text-center">
         <form onSubmit={this.handleSubmit} className="form-signin">
-          <img
-            className="mb-4"
-            src="../../assets/brand/bootstrap-solid.svg"
-            alt=""
-            width="72"
-            height="72"
-          />
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <label className="sr-only">Email address</label>
+          <img className="mb-4" src={logo} alt="" width="150" height="150" />
+          <h2 className="h3 mb-3 font-weight-normal">
+            S'il vous plaît connectez-vous
+          </h2>
+          <label className="sr-only">Email</label>
           <input
             type="email"
             id="inputEmail"
             className="form-control"
-            placeholder="Email address"
+            placeholder="Email"
             required
             autoFocus
             onChange={this.handleMail}
           />
-          <label className="sr-only">Password</label>
+          <label className="sr-only">Mot de passe</label>
           <input
             type="password"
             id="inputPassword"
@@ -62,13 +60,9 @@ export class Login extends Component {
             required
             onChange={this.handlePass}
           />
-          <div className="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
-            </label>
-          </div>
+
           <button className="btn btn-lg btn-primary btn-block" type="submit">
-            Sign in
+            Connection
           </button>
           <p className="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
         </form>
