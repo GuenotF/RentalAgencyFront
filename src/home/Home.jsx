@@ -27,7 +27,7 @@ class Home extends Component {
 
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label for="adress">Où vous trouvez-vous ?</label>
+              <label htmlFor="adress">Où vous trouvez-vous ?</label>
               <input
                 type="text"
                 className="form-control"
