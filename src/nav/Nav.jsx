@@ -2,12 +2,12 @@ import React from "react";
 
 const Nav = () => {
   return (
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a className="navbar-brand" href="#">
         Rental Agency
       </a>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarCollapse"
@@ -15,22 +15,22 @@ const Nav = () => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon" />
+        <span className="navbar-toggler-icon" />
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              Home <span class="sr-only">(current)</span>
+      <div className="collapse navbar-collapse" id="navbarCollapse">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <a className="nav-link" href="#">
+              Home <span className="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li className="nav-item">
+            <a className="nav-link" href="#">
               Link
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">
+          <li className="nav-item">
+            <a className="nav-link disabled" href="#">
               Disabled
             </a>
           </li>
