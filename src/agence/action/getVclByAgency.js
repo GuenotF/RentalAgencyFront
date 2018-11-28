@@ -1,7 +1,7 @@
-import listeActions from "../action/index-types";
+import listeActions from "./index-types";
 import mockVcl from "../mock-vcl";
 
-export default function getAgencyByCp(id) {
+export default function getVclByAgency(id) {
   return function(dispatch) {
     const result = mockVcl.filter(mockVcl => mockVcl.fkId_Agency === id);
 
