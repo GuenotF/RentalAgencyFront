@@ -11,6 +11,10 @@ export default function ListeReducer(state = initState, action) {
             return { ...state,
                 liste: action.payload
             };
+        case listeActions.GET_AGENCY_BY_CP:
+            return { ...state,
+                liste: action.payload
+            };
 
         default:
             return state;

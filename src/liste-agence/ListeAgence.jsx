@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import getAgency from "./actions/getAgency";
+import getAgencyByCp from "./actions/getAgencyByCp";
 
 class ListeAgence extends Component {
   componentDidMount() {
+<<<<<<< HEAD
     this.props.getAgency(this.props.cp);
+=======
+    // this.props.getAgency();
+    this.props.getAgencyByCp("31000");
+>>>>>>> Fabien
   }
 
   render() {
@@ -28,7 +34,7 @@ class ListeAgence extends Component {
 
 const mapStateToProps = state => ({ listeAgence: state.agency.liste });
 
-const mapDispatchToProps = { getAgency };
+const mapDispatchToProps = { getAgency, getAgencyByCp };
 
 export default connect(
   mapStateToProps,
