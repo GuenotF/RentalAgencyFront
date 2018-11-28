@@ -5,7 +5,10 @@ import ListeAgence from "../liste-agence/ListeAgence";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = {
+      value: "",
+      cp: null
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,8 +19,10 @@ class Home extends Component {
   }
 
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
     event.preventDefault();
+    console.log("event.target.value", event.target);
+
+    this.setState({ cp: 1 });
   }
 
   render() {
@@ -48,7 +53,11 @@ class Home extends Component {
             />
           </form>
         </div>
-        <ListeAgence />
+        <div className="container">
+          <div className="row">
+            <ListeAgence cp={this.state.cp} />
+          </div>
+        </div>
       </main>
     );
   }
