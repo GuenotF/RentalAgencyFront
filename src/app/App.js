@@ -8,7 +8,11 @@ import "./App.scss";
 import Nav from "../nav/Nav";
 import Home from "../home/Home";
 import Login from "../login/Login";
-//import ViewAgency from "../agence/ViewAgency";
+import ViewAgency from "../agence/ViewAgency";
+// withRouter
+import { withRouter } from "react-router";
+// compose
+import { compose } from "recompose";
 
 class App extends Component {
   render() {
@@ -21,7 +25,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/agency/:id" component={ViewAgency} /> */}
+            <Route exact path="/agency/:id" component={ViewAgency} />
           </Switch>
         </div>
       );
@@ -29,11 +33,15 @@ class App extends Component {
   }
 }
 const mapDispatchToProps = {};
+
 const mapStateToProps = state => ({
   isLoggedIn: state.user.isLoggedIn
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(App);
