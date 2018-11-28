@@ -8,6 +8,7 @@ import "./App.scss";
 import Nav from "../nav/Nav";
 import Home from "../home/Home";
 import Login from "../login/Login";
+//import ViewAgency from "../agence/ViewAgency";
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/agency/:id" component={ViewAgency} /> */}
           </Switch>
         </div>
       );
