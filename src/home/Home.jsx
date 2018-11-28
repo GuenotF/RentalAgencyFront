@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListeAgence from "../liste-agence/ListeAgence";
-//
+// action
+import getAgencyByCp from "../liste-agence/actions/getAgencyByCp";
 
 class Home extends Component {
   constructor(props) {
@@ -25,7 +26,9 @@ class Home extends Component {
     const cp = event.target[0].value;
 
     if (Number.isInteger(parseInt(cp)) && cp.length === 5) {
-      this.setState({ cp: event.target[0].value, warning: false });
+      this.setState({ cp: event.target[0].value, warning: false }, () =>
+        this.props.getAgencyByCp(this.state.cp)
+      );
     } else {
       this.setState({ warning: true });
     }
@@ -75,7 +78,7 @@ class Home extends Component {
                   <h2 className="col-12 text-center" key={1}>
                     Liste des agences dans le {this.state.cp}{" "}
                   </h2>,
-                  <ListeAgence key={2} cp={this.state.cp} />
+                  <ListeAgence key={2} listeAgence={this.props.listeAgence} />
                 ]
               : null}
           </div>
@@ -84,8 +87,11 @@ class Home extends Component {
     );
   }
 }
-function mapStateToProps(state) {
-  return {};
-}
+const mapStateToProps = state => ({ listeAgence: state.agency.liste });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = { getAgencyByCp };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
