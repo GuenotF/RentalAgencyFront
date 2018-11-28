@@ -4,12 +4,10 @@ import getAgency from "./actions/getAgency";
 
 class ListeAgence extends Component {
   componentDidMount() {
-    this.props.getAgency();
+    this.props.getAgency(this.props.cp);
   }
 
   render() {
-    console.log("this.props", this.props);
-
     const { listeAgence } = this.props;
 
     if (this.props.cp) {

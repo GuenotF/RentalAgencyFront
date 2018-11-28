@@ -8,11 +8,10 @@ import "./App.scss";
 import Nav from "../nav/Nav";
 import Home from "../home/Home";
 import Login from "../login/Login";
-import listeAgence from "../liste-agence/ListeAgence";
 
 class App extends Component {
   render() {
-    if (!this.props.isLoggedIn) {
+    if (this.props.isLoggedIn) {
       return <Login />;
     } else {
       return (

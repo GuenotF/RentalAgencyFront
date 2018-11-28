@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListeAgence from "../liste-agence/ListeAgence";
+//
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      cp: null
+      cp: null,
+      warning: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,12 +22,18 @@ class Home extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("event.target.value", event.target);
+    const cp = event.target[0].value;
 
-    this.setState({ cp: 1 });
+    if (Number.isInteger(parseInt(cp)) && cp.length === 5) {
+      this.setState({ cp: event.target[0].value, warning: false });
+    } else {
+      this.setState({ warning: true });
+    }
   }
 
   render() {
+    console.log("this state", this.state);
+
     return (
       <main role="main" className="container">
         <div className="jumbotron">
@@ -42,9 +50,16 @@ class Home extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}
               />
-              <small id="emailHelp" className="form-text text-muted">
-                Exemple : 31000
-              </small>
+              {!this.state.warning && (
+                <small id="emailHelp" className="form-text text-muted">
+                  Exemple : 31000
+                </small>
+              )}
+              {this.state.warning && (
+                <div className="invalid-feedback">
+                  Merci de rentrer un code postal valide
+                </div>
+              )}
             </div>
             <input
               className="btn btn-lg btn-primary"
@@ -55,7 +70,14 @@ class Home extends Component {
         </div>
         <div className="container">
           <div className="row">
-            <ListeAgence cp={this.state.cp} />
+            {this.state.cp
+              ? [
+                  <h2 className="col-12 text-center" key={1}>
+                    Liste des agences dans le {this.state.cp}{" "}
+                  </h2>,
+                  <ListeAgence key={2} cp={this.state.cp} />
+                ]
+              : null}
           </div>
         </div>
       </main>
