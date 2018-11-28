@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // action
 import getVclByAgency from "./action/getVclByAgency";
+import { Link } from "react-router-dom";
 
 class ViewAgency extends Component {
   componentDidMount() {
@@ -21,14 +22,18 @@ class ViewAgency extends Component {
               listeVcl.map((vcl, index) => {
                 return (
                   <div key={index} className="col col-listAgence">
-                    <div className="card" style={{ width: "18rem" }}>
-                      <div className="card-body">
-                        <h5 className="card-title">nom : {vcl.nom}</h5>
-                        <p className="card-text">type : {vcl.type}</p>
-                        <p className="card-text">prix : {vcl.prix_j}€/j</p>
-                        <button className="btn btn-default">Réserver</button>
+                    <Link to={`/vcl/${vcl.nom}`}>
+                      <div className="card" style={{ width: "18rem" }}>
+                        <div className="card-body">
+                          <h5 className="card-title">nom : {vcl.nom}</h5>
+                          <p className="card-text">type : {vcl.type}</p>
+                          <p className="card-text">prix : {vcl.prix_j}€/j</p>
+                          <button className="btn btn-default">
+                            Voir le détail
+                          </button>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 );
               })
